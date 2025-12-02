@@ -1,122 +1,137 @@
 ﻿using UnityEngine;
 
-public class NPC_AI : MonoBehaviour
+public class SimpleNPC : MonoBehaviour
 {
-    private enum State { Patrol, Chase }
-    private State currentState = State.Patrol;
-
-    [Header("Movement Settings")]
+    [Header("Movement")]
     [SerializeField] private float patrolSpeed = 2f;
-    [SerializeField] private float chaseSpeed = 5f;
-    [SerializeField] private float patrolDistance = 3f;
+    [SerializeField] private float chaseSpeed = 4f;
+    [SerializeField] private Transform leftPoint;
+    [SerializeField] private Transform rightPoint;
+
+    private bool movingRight = true;
 
     [Header("Vision Settings")]
-    [SerializeField] private float visionRange = 5f;
-    [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private LayerMask obstacleLayer;
-    [SerializeField] private bool useLineOfSight = true;
+    [SerializeField] private float visionRange = 6f;
+    [SerializeField] private float visionThickness = 0.2f;
+    [SerializeField] private float visionOpacity = 0.4f;
+    [SerializeField] private Color visionColor = Color.red;
 
-    [Header("Vision Gizmo (Scene View Only)")]
-    [SerializeField] private bool showVisionGizmo = true;
-    [SerializeField] private Color visionGizmoColor = new Color(1f, 0.92f, 0.016f, 0.6f); // default yellow
-    [SerializeField] private float gizmoLineThickness = 0.5f; // works best for wire discs
+    [Tooltip("Layers that block vision (walls, objects). Player layer is added automatically.")]
+    [SerializeField] private LayerMask obstacleMask;
 
-    private Rigidbody2D body;
-    private Vector2 startPos;
-    private bool movingRight = true;
     private Transform player;
+    private PlayerMovement playerScript;
+    private int playerLayer;
 
-    private void Awake()
+    private void Start()
     {
-        body = GetComponent<Rigidbody2D>();
-        startPos = transform.position;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerScript = player.GetComponent<PlayerMovement>();
+
+        // Auto-detect player layer and include it
+        playerLayer = 1 << player.gameObject.layer;
     }
 
     private void Update()
     {
-        DetectPlayer();
-
-        switch (currentState)
+        // If player is hidden → patrol only
+        if (playerScript.IsHidden)
         {
-            case State.Patrol:
-                Patrol();
-                break;
+            Patrol();
+            return;
+        }
 
-            case State.Chase:
-                ChasePlayer();
-                break;
+        if (CanSeePlayer())
+        {
+            ChasePlayer();
+        }
+        else
+        {
+            Patrol();
         }
     }
 
     private void Patrol()
     {
-        float speed = movingRight ? patrolSpeed : -patrolSpeed;
-        body.linearVelocity = new Vector2(speed, body.linearVelocity.y);
+        float speed = patrolSpeed;
 
-        if (movingRight && transform.position.x >= startPos.x + patrolDistance)
-            movingRight = false;
-        else if (!movingRight && transform.position.x <= startPos.x - patrolDistance)
-            movingRight = true;
+        if (movingRight)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+            if (transform.position.x >= rightPoint.position.x)
+                movingRight = false;
+        }
+        else
+        {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+
+            if (transform.position.x <= leftPoint.position.x)
+                movingRight = true;
+        }
     }
 
     private void ChasePlayer()
     {
-        if (player == null)
+        float speed = chaseSpeed;
+
+        if (player.position.x > transform.position.x)
         {
-            currentState = State.Patrol;
-            return;
-        }
-
-        float direction = Mathf.Sign(player.position.x - transform.position.x);
-        body.linearVelocity = new Vector2(direction * chaseSpeed, body.linearVelocity.y);
-    }
-
-    private void DetectPlayer()
-    {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, visionRange, playerLayer);
-
-        if (hit != null)
-        {
-            if (useLineOfSight)
-            {
-                Vector2 direction = (hit.transform.position - transform.position).normalized;
-                float distance = Vector2.Distance(transform.position, hit.transform.position);
-
-                RaycastHit2D obstacle = Physics2D.Raycast(transform.position, direction, distance, obstacleLayer);
-
-                if (obstacle.collider != null)
-                {
-                    currentState = State.Patrol;
-                    return;
-                }
-            }
-
-            player = hit.transform;
-            currentState = State.Chase;
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            movingRight = true;
         }
         else
         {
-            player = null;
-            currentState = State.Patrol;
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            movingRight = false;
         }
     }
 
-    private void OnDrawGizmos()
+    private bool CanSeePlayer()
     {
-        if (!showVisionGizmo) return;
+        Vector2 direction = movingRight ? Vector2.right : Vector2.left;
+        Vector2 start = transform.position;
+        float dist = Vector2.Distance(start, player.position);
 
-        Gizmos.color = visionGizmoColor;
+        // If player is too far, skip
+        if (dist > visionRange) return false;
 
-        // Draw disc manually with thickness
-        int segments = 32;
-        Vector3 prevPoint = transform.position + new Vector3(visionRange, 0, 0);
-
-        for (int i = 1; i <= segments; i++)
+        // FIRST: Check if player is in front direction (not behind NPC)
+        if ((player.position.x - start.x > 0 && !movingRight) ||
+            (player.position.x - start.x < 0 && movingRight))
         {
-            float angle = (i / (float)segments) * Mathf.PI * 2;
-            Vector3 nextPoint = transform.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * visionRange;
-            Gizmos.DrawLine(prevPoint, nextPoint);
-            prevPoint = nextPoint;
+            return false;
         }
+
+        // SECOND: Raycast for obstacles AND detect player layer
+        int combinedMask = obstacleMask | playerLayer;
+
+        RaycastHit2D hit = Physics2D.Raycast(start, direction, visionRange, combinedMask);
+
+        if (!hit) return false;
+
+        return hit.collider.CompareTag("Player");
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (leftPoint == null || rightPoint == null) return;
+
+        Color gizmoColor = new Color(visionColor.r, visionColor.g, visionColor.b, visionOpacity);
+        Gizmos.color = gizmoColor;
+
+        Vector3 dir = (movingRight ? Vector3.right : Vector3.left);
+        Vector3 start = transform.position;
+
+        // Proper thickness-drawn box-like FOV
+        float half = visionThickness * 0.5f;
+
+        Vector3 topStart = start + new Vector3(0, half, 0);
+        Vector3 bottomStart = start - new Vector3(0, half, 0);
+
+        Gizmos.DrawLine(topStart, topStart + dir * visionRange);
+        Gizmos.DrawLine(bottomStart, bottomStart + dir * visionRange);
+        Gizmos.DrawLine(topStart, bottomStart);
+        Gizmos.DrawLine(topStart + dir * visionRange, bottomStart + dir * visionRange);
     }
 }
