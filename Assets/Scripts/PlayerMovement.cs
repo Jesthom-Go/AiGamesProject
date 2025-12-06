@@ -15,33 +15,34 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
 
     [Header("Hiding Settings")]
-    [SerializeField] private float hiddenOpacity = 0.3f;
+    [SerializeField] private float hiddenOpacity = 0.25f;
     [SerializeField] private KeyCode hideKey = KeyCode.E;
 
-    [Header("Hiding Detection")]
-    [SerializeField] private Collider2D hideDetector; // dedicated child collider for container detection
+    [Header("Detector")]
+    [SerializeField] private Collider2D hideDetector; // trigger collider child
 
     private Rigidbody2D body;
     private SpriteRenderer sr;
 
-    private bool isGrounded;
-    private int jumpsRemaining;
-
+    private bool nearContainer = false;
     public bool IsHidden { get; private set; } = false;
 
-    // Track nearby container
-    private bool nearContainer = false;
+    private int jumpsRemaining;
+    private bool isGrounded;
+
+    private RigidbodyConstraints2D defaultConstraints;
+    private float defaultGravity;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
 
-        if (sr == null)
-            Debug.LogError("No SpriteRenderer found on player or children!");
+        defaultConstraints = body.constraints;
+        defaultGravity = body.gravityScale;
 
         if (hideDetector == null)
-            Debug.LogError("HideDetector is not assigned! Assign a child collider for detection.");
+            Debug.LogError("❌ Assign the HideDetector collider!");
     }
 
     private void Update()
@@ -57,8 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        body.linearVelocity = new Vector2(horizontal * speed, body.linearVelocity.y);
+        float x = Input.GetAxisRaw("Horizontal");
+        body.linearVelocity = new Vector2(x * speed, body.linearVelocity.y);
     }
 
     private void HandleJump()
@@ -77,18 +78,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckGrounded()
     {
-        if (groundCheckPoint == null)
-        {
-            isGrounded = false;
-            return;
-        }
-
-        isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(
+            groundCheckPoint.position,
+            groundCheckRadius,
+            groundLayer
+        );
     }
 
-    // ----------------------------
+    // -----------------------------------------
     // HIDING SYSTEM
-    // ----------------------------
+    // -----------------------------------------
     private void HandleHidingInput()
     {
         if (!nearContainer)
@@ -108,17 +107,21 @@ public class PlayerMovement : MonoBehaviour
         IsHidden = true;
         body.linearVelocity = Vector2.zero;
 
-        // Fade sprite
+        // Fade
         if (sr != null)
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, hiddenOpacity);
 
-        // Disable all player colliders except the hide detector
-        Collider2D[] allCols = GetComponentsInChildren<Collider2D>();
-        foreach (Collider2D col in allCols)
+        // Disable colliders EXCEPT hideDetector
+        foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
         {
-            if (col != hideDetector && !col.isTrigger)
-                col.enabled = false;
+            if (col == hideDetector) continue;
+            col.enabled = false;
         }
+
+        // Freeze player so they don't fall
+        body.gravityScale = 0f;
+        body.linearVelocity = Vector2.zero;
+        body.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     private void Unhide()
@@ -128,27 +131,29 @@ public class PlayerMovement : MonoBehaviour
         if (sr != null)
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
 
-        Collider2D[] allCols = GetComponentsInChildren<Collider2D>();
-        foreach (Collider2D col in allCols)
+        // Re-enable colliders except detector
+        foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
         {
-            if (col != hideDetector && !col.isTrigger)
-                col.enabled = true;
+            if (col == hideDetector) continue;
+            col.enabled = true;
         }
+
+        // Restore normal physics
+        body.gravityScale = defaultGravity;
+        body.constraints = defaultConstraints;
     }
 
-    // ----------------------------
-    // Detect containers using dedicated hideDetector
-    // ----------------------------
+    // -----------------------------------------
+    // HIDING DETECTION (FIXED)
+    // -----------------------------------------
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("HideContainer") && collision == hideDetector)
+        if (collision.CompareTag("HideContainer"))
         {
-            Debug.Log("Near");
-            nearContainer = true;
-        }
-        else if (collision.CompareTag("HideContainer"))
-        {
-            nearContainer = true;
+            if (collision.IsTouching(hideDetector))
+            {
+                nearContainer = true;
+            }
         }
     }
 
@@ -156,10 +161,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("HideContainer"))
         {
-            nearContainer = false;
+            if (!collision.IsTouching(hideDetector))
+            {
+                nearContainer = false;
 
-            if (IsHidden)
-                Unhide();
+                if (IsHidden)
+                    Unhide();
+            }
         }
     }
 }
