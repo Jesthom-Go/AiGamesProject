@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SimpleNPC : MonoBehaviour
 {
@@ -137,4 +139,37 @@ public class SimpleNPC : MonoBehaviour
         // Must hit player first
         return hit.collider.CompareTag("Player");
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            PlayerMovement pm = collision.collider.GetComponent<PlayerMovement>();
+
+            // Don't lose if player is hidden
+            if (pm != null && !pm.IsHidden)
+            {
+                LoseGame();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            PlayerMovement pm = collision.GetComponent<PlayerMovement>();
+
+            if (pm != null && !pm.IsHidden)
+            {
+                LoseGame();
+            }
+        }
+    }
+
+    private void LoseGame()
+    {
+        Debug.Log("❌ YOU LOST!");
+        SceneManager.LoadScene("Launcher");
+    }
+
 }
