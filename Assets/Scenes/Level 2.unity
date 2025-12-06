@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8099819}
   - component: {fileID: 8099821}
   - component: {fileID: 8099820}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 35229389}
   - component: {fileID: 35229390}
   - component: {fileID: 35229391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 55656226}
   - component: {fileID: 55656228}
   - component: {fileID: 55656227}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 72197329}
   - component: {fileID: 72197331}
   - component: {fileID: 72197330}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 87282987}
   - component: {fileID: 87282989}
   - component: {fileID: 87282988}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +974,7 @@ GameObject:
   - component: {fileID: 128561973}
   - component: {fileID: 128561974}
   - component: {fileID: 128561975}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1108,7 +1108,7 @@ GameObject:
   - component: {fileID: 145889201}
   - component: {fileID: 145889203}
   - component: {fileID: 145889202}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149881460}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platforms------------------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 171355431}
   - component: {fileID: 171355433}
   - component: {fileID: 171355432}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 208537491}
   - component: {fileID: 208537492}
   - component: {fileID: 208537493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,7 +1717,7 @@ GameObject:
   - component: {fileID: 236309073}
   - component: {fileID: 236309074}
   - component: {fileID: 236309075}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1851,7 +1851,7 @@ GameObject:
   - component: {fileID: 254345186}
   - component: {fileID: 254345188}
   - component: {fileID: 254345187}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1985,7 +1985,7 @@ GameObject:
   - component: {fileID: 278082766}
   - component: {fileID: 278082767}
   - component: {fileID: 278082768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2253,7 +2253,7 @@ GameObject:
   - component: {fileID: 288125144}
   - component: {fileID: 288125146}
   - component: {fileID: 288125145}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2387,7 +2387,7 @@ GameObject:
   - component: {fileID: 302177582}
   - component: {fileID: 302177584}
   - component: {fileID: 302177583}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2521,7 +2521,7 @@ GameObject:
   - component: {fileID: 312364768}
   - component: {fileID: 312364770}
   - component: {fileID: 312364769}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (07)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2655,7 +2655,7 @@ GameObject:
   - component: {fileID: 326349259}
   - component: {fileID: 326349261}
   - component: {fileID: 326349260}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2789,7 +2789,7 @@ GameObject:
   - component: {fileID: 353535136}
   - component: {fileID: 353535137}
   - component: {fileID: 353535138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3097,7 +3097,7 @@ GameObject:
   - component: {fileID: 404602186}
   - component: {fileID: 404602188}
   - component: {fileID: 404602187}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3318,7 +3318,7 @@ GameObject:
   - component: {fileID: 443712642}
   - component: {fileID: 443712644}
   - component: {fileID: 443712643}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3452,7 +3452,7 @@ GameObject:
   - component: {fileID: 478779037}
   - component: {fileID: 478779038}
   - component: {fileID: 478779039}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3586,7 +3586,7 @@ GameObject:
   - component: {fileID: 497776755}
   - component: {fileID: 497776757}
   - component: {fileID: 497776756}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3720,7 +3720,7 @@ GameObject:
   - component: {fileID: 505272664}
   - component: {fileID: 505272666}
   - component: {fileID: 505272665}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3854,7 +3854,7 @@ GameObject:
   - component: {fileID: 514529137}
   - component: {fileID: 514529139}
   - component: {fileID: 514529138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3988,7 +3988,7 @@ GameObject:
   - component: {fileID: 531986815}
   - component: {fileID: 531986817}
   - component: {fileID: 531986816}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4122,7 +4122,7 @@ GameObject:
   - component: {fileID: 539876608}
   - component: {fileID: 539876610}
   - component: {fileID: 539876609}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4343,7 +4343,7 @@ GameObject:
   - component: {fileID: 559995537}
   - component: {fileID: 559995539}
   - component: {fileID: 559995538}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4564,7 +4564,7 @@ GameObject:
   - component: {fileID: 579628930}
   - component: {fileID: 579628932}
   - component: {fileID: 579628931}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4698,7 +4698,7 @@ GameObject:
   - component: {fileID: 634976363}
   - component: {fileID: 634976365}
   - component: {fileID: 634976364}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4919,7 +4919,7 @@ GameObject:
   - component: {fileID: 650765042}
   - component: {fileID: 650765044}
   - component: {fileID: 650765043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5274,7 +5274,7 @@ GameObject:
   - component: {fileID: 660768206}
   - component: {fileID: 660768208}
   - component: {fileID: 660768207}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5408,7 +5408,7 @@ GameObject:
   - component: {fileID: 661398297}
   - component: {fileID: 661398298}
   - component: {fileID: 661398299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5542,7 +5542,7 @@ GameObject:
   - component: {fileID: 697477767}
   - component: {fileID: 697477769}
   - component: {fileID: 697477768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5676,7 +5676,7 @@ GameObject:
   - component: {fileID: 702174876}
   - component: {fileID: 702174878}
   - component: {fileID: 702174877}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5810,7 +5810,7 @@ GameObject:
   - component: {fileID: 734734847}
   - component: {fileID: 734734849}
   - component: {fileID: 734734848}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5944,7 +5944,7 @@ GameObject:
   - component: {fileID: 763516588}
   - component: {fileID: 763516589}
   - component: {fileID: 763516590}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6078,7 +6078,7 @@ GameObject:
   - component: {fileID: 769011439}
   - component: {fileID: 769011441}
   - component: {fileID: 769011440}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6212,7 +6212,7 @@ GameObject:
   - component: {fileID: 790276513}
   - component: {fileID: 790276515}
   - component: {fileID: 790276514}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6433,7 +6433,7 @@ GameObject:
   - component: {fileID: 797464290}
   - component: {fileID: 797464292}
   - component: {fileID: 797464291}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6567,7 +6567,7 @@ GameObject:
   - component: {fileID: 808160113}
   - component: {fileID: 808160115}
   - component: {fileID: 808160114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6701,7 +6701,7 @@ GameObject:
   - component: {fileID: 816744469}
   - component: {fileID: 816744471}
   - component: {fileID: 816744470}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6835,7 +6835,7 @@ GameObject:
   - component: {fileID: 832525543}
   - component: {fileID: 832525545}
   - component: {fileID: 832525544}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6969,7 +6969,7 @@ GameObject:
   - component: {fileID: 844187609}
   - component: {fileID: 844187611}
   - component: {fileID: 844187610}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7190,7 +7190,7 @@ GameObject:
   - component: {fileID: 855284929}
   - component: {fileID: 855284931}
   - component: {fileID: 855284930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7411,7 +7411,7 @@ GameObject:
   - component: {fileID: 893498228}
   - component: {fileID: 893498230}
   - component: {fileID: 893498229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7669,7 +7669,7 @@ GameObject:
   - component: {fileID: 899387265}
   - component: {fileID: 899387266}
   - component: {fileID: 899387267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7803,7 +7803,7 @@ GameObject:
   - component: {fileID: 900004346}
   - component: {fileID: 900004348}
   - component: {fileID: 900004347}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7937,7 +7937,7 @@ GameObject:
   - component: {fileID: 911832995}
   - component: {fileID: 911832997}
   - component: {fileID: 911832996}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8071,7 +8071,7 @@ GameObject:
   - component: {fileID: 931803322}
   - component: {fileID: 931803323}
   - component: {fileID: 931803324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8205,7 +8205,7 @@ GameObject:
   - component: {fileID: 932956349}
   - component: {fileID: 932956351}
   - component: {fileID: 932956350}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8339,7 +8339,7 @@ GameObject:
   - component: {fileID: 964830098}
   - component: {fileID: 964830100}
   - component: {fileID: 964830099}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8473,7 +8473,7 @@ GameObject:
   - component: {fileID: 989071904}
   - component: {fileID: 989071906}
   - component: {fileID: 989071905}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8607,7 +8607,7 @@ GameObject:
   - component: {fileID: 1142667109}
   - component: {fileID: 1142667111}
   - component: {fileID: 1142667110}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8828,7 +8828,7 @@ GameObject:
   - component: {fileID: 1152539500}
   - component: {fileID: 1152539502}
   - component: {fileID: 1152539501}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8962,7 +8962,7 @@ GameObject:
   - component: {fileID: 1185749209}
   - component: {fileID: 1185749211}
   - component: {fileID: 1185749210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9096,7 +9096,7 @@ GameObject:
   - component: {fileID: 1189777266}
   - component: {fileID: 1189777268}
   - component: {fileID: 1189777267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9230,7 +9230,7 @@ GameObject:
   - component: {fileID: 1193912069}
   - component: {fileID: 1193912070}
   - component: {fileID: 1193912071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9364,7 +9364,7 @@ GameObject:
   - component: {fileID: 1210872070}
   - component: {fileID: 1210872072}
   - component: {fileID: 1210872071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9498,7 +9498,7 @@ GameObject:
   - component: {fileID: 1211259636}
   - component: {fileID: 1211259638}
   - component: {fileID: 1211259637}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9632,7 +9632,7 @@ GameObject:
   - component: {fileID: 1217821100}
   - component: {fileID: 1217821101}
   - component: {fileID: 1217821102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9853,7 +9853,7 @@ GameObject:
   - component: {fileID: 1241072398}
   - component: {fileID: 1241072399}
   - component: {fileID: 1241072400}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9987,7 +9987,7 @@ GameObject:
   - component: {fileID: 1242891197}
   - component: {fileID: 1242891198}
   - component: {fileID: 1242891199}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10295,7 +10295,7 @@ GameObject:
   - component: {fileID: 1334266218}
   - component: {fileID: 1334266219}
   - component: {fileID: 1334266220}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10429,7 +10429,7 @@ GameObject:
   - component: {fileID: 1381021671}
   - component: {fileID: 1381021672}
   - component: {fileID: 1381021673}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10563,7 +10563,7 @@ GameObject:
   - component: {fileID: 1381729758}
   - component: {fileID: 1381729760}
   - component: {fileID: 1381729759}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10697,7 +10697,7 @@ GameObject:
   - component: {fileID: 1407642969}
   - component: {fileID: 1407642971}
   - component: {fileID: 1407642970}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10831,7 +10831,7 @@ GameObject:
   - component: {fileID: 1409614714}
   - component: {fileID: 1409614715}
   - component: {fileID: 1409614716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11149,7 +11149,7 @@ GameObject:
   - component: {fileID: 1499272620}
   - component: {fileID: 1499272621}
   - component: {fileID: 1499272622}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11551,7 +11551,7 @@ GameObject:
   - component: {fileID: 1539502833}
   - component: {fileID: 1539502834}
   - component: {fileID: 1539502835}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11685,7 +11685,7 @@ GameObject:
   - component: {fileID: 1550084405}
   - component: {fileID: 1550084406}
   - component: {fileID: 1550084407}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11819,7 +11819,7 @@ GameObject:
   - component: {fileID: 1602664675}
   - component: {fileID: 1602664676}
   - component: {fileID: 1602664677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11953,7 +11953,7 @@ GameObject:
   - component: {fileID: 1653513381}
   - component: {fileID: 1653513383}
   - component: {fileID: 1653513382}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12087,7 +12087,7 @@ GameObject:
   - component: {fileID: 1662430619}
   - component: {fileID: 1662430621}
   - component: {fileID: 1662430620}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12221,7 +12221,7 @@ GameObject:
   - component: {fileID: 1669873966}
   - component: {fileID: 1669873968}
   - component: {fileID: 1669873967}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12355,7 +12355,7 @@ GameObject:
   - component: {fileID: 1674839443}
   - component: {fileID: 1674839445}
   - component: {fileID: 1674839444}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12576,7 +12576,7 @@ GameObject:
   - component: {fileID: 1690692145}
   - component: {fileID: 1690692147}
   - component: {fileID: 1690692146}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12797,7 +12797,7 @@ GameObject:
   - component: {fileID: 1722199533}
   - component: {fileID: 1722199535}
   - component: {fileID: 1722199534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12931,7 +12931,7 @@ GameObject:
   - component: {fileID: 1730801544}
   - component: {fileID: 1730801545}
   - component: {fileID: 1730801546}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13065,7 +13065,7 @@ GameObject:
   - component: {fileID: 1732223102}
   - component: {fileID: 1732223104}
   - component: {fileID: 1732223103}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13199,7 +13199,7 @@ GameObject:
   - component: {fileID: 1756311909}
   - component: {fileID: 1756311911}
   - component: {fileID: 1756311910}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13333,7 +13333,7 @@ GameObject:
   - component: {fileID: 1820601903}
   - component: {fileID: 1820601905}
   - component: {fileID: 1820601904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13467,7 +13467,7 @@ GameObject:
   - component: {fileID: 1835383838}
   - component: {fileID: 1835383840}
   - component: {fileID: 1835383839}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13726,7 +13726,7 @@ GameObject:
   - component: {fileID: 1868006665}
   - component: {fileID: 1868006666}
   - component: {fileID: 1868006667}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14131,7 +14131,7 @@ GameObject:
   - component: {fileID: 2001531018}
   - component: {fileID: 2001531020}
   - component: {fileID: 2001531019}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14265,7 +14265,7 @@ GameObject:
   - component: {fileID: 2044189560}
   - component: {fileID: 2044189561}
   - component: {fileID: 2044189562}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14399,7 +14399,7 @@ GameObject:
   - component: {fileID: 2069748734}
   - component: {fileID: 2069748736}
   - component: {fileID: 2069748735}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14533,7 +14533,7 @@ GameObject:
   - component: {fileID: 2095218408}
   - component: {fileID: 2095218409}
   - component: {fileID: 2095218410}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14667,7 +14667,7 @@ GameObject:
   - component: {fileID: 2108691483}
   - component: {fileID: 2108691485}
   - component: {fileID: 2108691484}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14801,7 +14801,7 @@ GameObject:
   - component: {fileID: 2114190001}
   - component: {fileID: 2114190003}
   - component: {fileID: 2114190002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Box (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14935,7 +14935,7 @@ GameObject:
   - component: {fileID: 2137111061}
   - component: {fileID: 2137111062}
   - component: {fileID: 2137111063}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal Beams (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

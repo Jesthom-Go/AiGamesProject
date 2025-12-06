@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - HideContainer
+  - Wall
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -41,6 +43,36 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 2613904219
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 3619787257
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 1680570695
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 1618655277
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 1014563517
+    locked: 0
+  - name: New Layer 6
+    uniqueID: 2045538779
+    locked: 0
+  - name: New Layer 7
+    uniqueID: 3617652009
+    locked: 0
+  - name: New Layer 8
+    uniqueID: 657204275
+    locked: 0
+  - name: New Layer 9
+    uniqueID: 1449799051
+    locked: 0
+  - name: New Layer 10
+    uniqueID: 3310080461
     locked: 0
   m_RenderingLayers:
   - Default

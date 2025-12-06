@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private KeyCode hideKey = KeyCode.E;
 
     [Header("Detector")]
-    [SerializeField] private Collider2D hideDetector; // trigger collider child
+    [SerializeField] private Collider2D hideDetector; // trigger child collider
 
     private Rigidbody2D body;
     private SpriteRenderer sr;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         defaultGravity = body.gravityScale;
 
         if (hideDetector == null)
-            Debug.LogError("❌ Assign the HideDetector collider!");
+            Debug.LogError("❌ Assign the HideDetector (child trigger collider)!");
     }
 
     private void Update()
@@ -56,12 +56,43 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
     }
 
+    // ----------------------------------
+    // MOVEMENT (WITH ANTI-STICK FIX)
+    // ----------------------------------
     private void HandleMovement()
     {
         float x = Input.GetAxisRaw("Horizontal");
+
+        // Prevents wall friction from freezing movement
+        FixSideSticking();
+
         body.linearVelocity = new Vector2(x * speed, body.linearVelocity.y);
+
+        // Flip sprite
+        if (x != 0)
+            sr.flipX = (x < 0);
     }
 
+    private void FixSideSticking()
+    {
+        // Cast small rays sideways to detect walls
+        RaycastHit2D leftHit = Physics2D.Raycast(transform.position, Vector2.left, 0.15f, groundLayer);
+        RaycastHit2D rightHit = Physics2D.Raycast(transform.position, Vector2.right, 0.15f, groundLayer);
+
+        // If touching wall & moving toward it → cancel horizontal slowdown
+        if (leftHit.collider != null && body.linearVelocity.x < 0)
+        {
+            body.linearVelocity = new Vector2(-speed, body.linearVelocity.y);
+        }
+        else if (rightHit.collider != null && body.linearVelocity.x > 0)
+        {
+            body.linearVelocity = new Vector2(speed, body.linearVelocity.y);
+        }
+    }
+
+    // ----------------------------------
+    // JUMPING
+    // ----------------------------------
     private void HandleJump()
     {
         CheckGrounded();
@@ -85,9 +116,9 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
-    // -----------------------------------------
+    // ----------------------------------
     // HIDING SYSTEM
-    // -----------------------------------------
+    // ----------------------------------
     private void HandleHidingInput()
     {
         if (!nearContainer)
@@ -107,18 +138,18 @@ public class PlayerMovement : MonoBehaviour
         IsHidden = true;
         body.linearVelocity = Vector2.zero;
 
-        // Fade
+        // Fade sprite
         if (sr != null)
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, hiddenOpacity);
 
-        // Disable colliders EXCEPT hideDetector
+        // Disable ONLY real colliders, keep hideDetector active
         foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
         {
             if (col == hideDetector) continue;
             col.enabled = false;
         }
 
-        // Freeze player so they don't fall
+        // Prevent falling
         body.gravityScale = 0f;
         body.linearVelocity = Vector2.zero;
         body.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -131,43 +162,14 @@ public class PlayerMovement : MonoBehaviour
         if (sr != null)
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
 
-        // Re-enable colliders except detector
+        // Re-enable colliders except hideDetector
         foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
         {
             if (col == hideDetector) continue;
             col.enabled = true;
         }
 
-        // Restore normal physics
         body.gravityScale = defaultGravity;
         body.constraints = defaultConstraints;
-    }
-
-    // -----------------------------------------
-    // HIDING DETECTION (FIXED)
-    // -----------------------------------------
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("HideContainer"))
-        {
-            if (collision.IsTouching(hideDetector))
-            {
-                nearContainer = true;
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("HideContainer"))
-        {
-            if (!collision.IsTouching(hideDetector))
-            {
-                nearContainer = false;
-
-                if (IsHidden)
-                    Unhide();
-            }
-        }
     }
 }
