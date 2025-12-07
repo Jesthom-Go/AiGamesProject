@@ -169,7 +169,7 @@ public class SimpleNPC : MonoBehaviour
     private void LoseGame()
     {
         Debug.Log("❌ YOU LOST!");
-        SceneManager.LoadScene("Launcher");
+        SceneManager.LoadScene("LoseScreen");
     }
 
 }
