@@ -39,7 +39,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         // N O P E .
         PhotonNetwork.JoinLobby();
 
-        Debug.Log("Joined Lobby — matchmaking now works.");
+        Debug.Log("Joined Lobby — matchmaking SHOULD WORK.");
     }
 
     public override void OnDisconnected(DisconnectCause cause)

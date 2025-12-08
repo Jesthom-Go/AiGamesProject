@@ -31,13 +31,32 @@ public class SimpleNPC : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerScript = player.GetComponent<PlayerMovement>();
         sr = GetComponent<SpriteRenderer>();
-
-        // Set default color
         if (sr) sr.color = patrolColor;
+
+        // Start looking for a player (needed for Photon multiplayer)
+        StartCoroutine(FindPlayer());
     }
+
+    private System.Collections.IEnumerator FindPlayer()
+    {
+        while (player == null)
+        {
+            GameObject p = GameObject.FindGameObjectWithTag("Player");
+
+            if (p != null)
+            {
+                player = p.transform;
+                playerScript = p.GetComponent<PlayerMovement>();
+
+                Debug.Log("NPC found a player: " + p.name);
+                yield break;
+            }
+
+            yield return null; // try again next frame
+        }
+    }
+
 
     private void Update()
     {
