@@ -1,24 +1,40 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class CameraFollow : MonoBehaviour
+public class PlayerCameraFollow : MonoBehaviour
 {
-    [Header("Target")]
-    [SerializeField] private Transform target;
-
     [Header("Camera Settings")]
     [SerializeField] private float smoothSpeed = 0.15f;
     [SerializeField] private Vector3 offset = new Vector3(0, 0, -10);
 
+    private Transform target;
     private Vector3 velocity = Vector3.zero;
+    private Camera cam;
+    private PhotonView pv;
+
+    private void Start()
+    {
+        pv = GetComponentInParent<PhotonView>();
+        cam = GetComponent<Camera>();
+
+        if (pv != null && pv.IsMine)
+        {
+            // Enable camera only for local player after ownership is confirmed
+            cam.enabled = true; // safer than SetActive
+            target = pv.transform;
+            Debug.Log($"Camera assigned to local player: {pv.name}");
+        }
+        else
+        {
+            cam.enabled = false;
+        }
+    }
 
     private void LateUpdate()
     {
-        if (target == null) return;
+        if (!cam.enabled || target == null) return;
 
-        // Target position including offset
         Vector3 desiredPosition = target.position + offset;
-
-        // Smooth follow
         Vector3 smoothedPosition = Vector3.SmoothDamp(
             transform.position,
             desiredPosition,

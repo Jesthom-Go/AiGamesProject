@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Photon.Pun;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPun
 {
     [Header("Movement Settings")]
     [SerializeField] private float speed = 8f;
@@ -33,20 +34,34 @@ public class PlayerMovement : MonoBehaviour
     private RigidbodyConstraints2D defaultConstraints;
     private float defaultGravity;
 
+    private PhotonView pv;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        pv = GetComponent<PhotonView>();
 
         defaultConstraints = body.constraints;
         defaultGravity = body.gravityScale;
 
         if (hideDetector == null)
             Debug.LogError("❌ Assign the HideDetector (child trigger collider)!");
+
+        //------------------------------------------------
+        // Disable physics for remote players
+        //------------------------------------------------
+        if (!pv.IsMine)
+        {
+            body.isKinematic = true;          // remote physics synced automatically by Photon
+            hideDetector.enabled = false;     // remote players cannot hide locally
+        }
     }
 
     private void Update()
     {
+        if (!pv.IsMine) return; // 🔥 prevent remote input
+
         HandleHidingInput();
 
         if (IsHidden)
@@ -57,13 +72,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // ----------------------------------
-    // MOVEMENT (WITH ANTI-STICK FIX)
+    // MOVEMENT
     // ----------------------------------
     private void HandleMovement()
     {
         float x = Input.GetAxisRaw("Horizontal");
 
-        // Prevents wall friction from freezing movement
         FixSideSticking();
 
         body.linearVelocity = new Vector2(x * speed, body.linearVelocity.y);
@@ -75,11 +89,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixSideSticking()
     {
-        // Cast small rays sideways to detect walls
         RaycastHit2D leftHit = Physics2D.Raycast(transform.position, Vector2.left, 0.15f, groundLayer);
         RaycastHit2D rightHit = Physics2D.Raycast(transform.position, Vector2.right, 0.15f, groundLayer);
 
-        // If touching wall & moving toward it → cancel horizontal slowdown
         if (leftHit.collider != null && body.linearVelocity.x < 0)
         {
             body.linearVelocity = new Vector2(-speed, body.linearVelocity.y);
@@ -138,20 +150,15 @@ public class PlayerMovement : MonoBehaviour
         IsHidden = true;
         body.linearVelocity = Vector2.zero;
 
-        // Fade sprite
-        if (sr != null)
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, hiddenOpacity);
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, hiddenOpacity);
 
-        // Disable ONLY real colliders, keep hideDetector active
         foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
         {
             if (col == hideDetector) continue;
             col.enabled = false;
         }
 
-        // Prevent falling
         body.gravityScale = 0f;
-        body.linearVelocity = Vector2.zero;
         body.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
@@ -159,10 +166,8 @@ public class PlayerMovement : MonoBehaviour
     {
         IsHidden = false;
 
-        if (sr != null)
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
 
-        // Re-enable colliders except hideDetector
         foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
         {
             if (col == hideDetector) continue;
@@ -171,5 +176,35 @@ public class PlayerMovement : MonoBehaviour
 
         body.gravityScale = defaultGravity;
         body.constraints = defaultConstraints;
+    }
+
+    // -----------------------------------------
+    // HIDING DETECTION
+    // -----------------------------------------
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!pv.IsMine) return; // remote players shouldn't trigger hiding logic
+
+        if (collision.CompareTag("HideContainer"))
+        {
+            if (collision.IsTouching(hideDetector))
+                nearContainer = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!pv.IsMine) return;
+
+        if (collision.CompareTag("HideContainer"))
+        {
+            if (!collision.IsTouching(hideDetector))
+            {
+                nearContainer = false;
+
+                if (IsHidden)
+                    Unhide();
+            }
+        }
     }
 }

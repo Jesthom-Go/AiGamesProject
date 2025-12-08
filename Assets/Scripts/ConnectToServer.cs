@@ -1,22 +1,33 @@
 using UnityEngine;
 using Photon.Pun;
-using UnityEngine.SceneManagement;
+using Photon.Realtime;
 
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
     }
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.JoinLobby();
+        Debug.Log("Connected to Photon Master Server");
+
+        PhotonNetwork.JoinRandomRoom();
     }
 
-    public override void OnJoinedLobby()
+    public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        SceneManager.LoadScene("Lobby");
+        Debug.Log("No room found, creating one...");
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
+    }
+
+    public override void OnJoinedRoom()
+    {
+        Debug.Log("Joined Room!");
+
+        // Load your gameplay scene
+        PhotonNetwork.LoadLevel("Level01");
     }
 }
